@@ -49,7 +49,7 @@ public final class Java8OptionalMessageBodyWriterTest extends JerseyTest {
     }
 
     @Test
-    public void presentOptionalsReturnTheirValue() throws Exception {
+    public void presentOptionalsReturnTheirValue() {
         assertThat(target("/optional-return/")
                 .queryParam("id", "woo").request()
                 .get(String.class))
@@ -72,7 +72,7 @@ public final class Java8OptionalMessageBodyWriterTest extends JerseyTest {
     }
 
     @Test
-    public void absentOptionalsThrowANotFound() throws Exception {
+    public void absentOptionalsThrowANotFound() {
         Response response = target("/optional-return/").request().get();
         assertThat(response.getStatus()).isEqualTo(204);
 

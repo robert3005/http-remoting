@@ -31,7 +31,7 @@ public final class QosExceptionMapperTest {
     private static final ExceptionMapper<QosException> mapper = new QosExceptionMapper();
 
     @Test
-    public void testThrottle_withoutDuration() throws Exception {
+    public void testThrottle_withoutDuration() {
         QosException exception = QosException.throttle();
         Response response = mapper.toResponse(exception);
         assertThat(response.getStatus()).isEqualTo(429);
@@ -39,7 +39,7 @@ public final class QosExceptionMapperTest {
     }
 
     @Test
-    public void testThrottle_withDuration() throws Exception {
+    public void testThrottle_withDuration() {
         QosException exception = QosException.throttle(Duration.ofMinutes(2));
         Response response = mapper.toResponse(exception);
         assertThat(response.getStatus()).isEqualTo(429);
@@ -55,7 +55,7 @@ public final class QosExceptionMapperTest {
     }
 
     @Test
-    public void testUnavailable() throws Exception {
+    public void testUnavailable() {
         QosException exception = QosException.unavailable();
         Response response = mapper.toResponse(exception);
         assertThat(response.getStatus()).isEqualTo(503);

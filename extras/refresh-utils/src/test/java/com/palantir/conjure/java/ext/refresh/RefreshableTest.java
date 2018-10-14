@@ -58,7 +58,7 @@ public final class RefreshableTest {
     }
 
     @Test
-    public void testRefreshableFromObservable() throws InterruptedException {
+    public void testRefreshableFromObservable() {
         Object o1 = new Object();
         Object o2 = new Object();
 

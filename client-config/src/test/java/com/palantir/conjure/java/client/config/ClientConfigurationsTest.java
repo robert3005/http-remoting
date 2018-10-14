@@ -74,7 +74,7 @@ public final class ClientConfigurationsTest {
     }
 
     @Test
-    public void meshProxy_maxRetriesMustBe0() throws Exception {
+    public void meshProxy_maxRetriesMustBe0() {
         assertThatThrownBy(() -> ClientConfigurations.of(meshProxyServiceConfig(uris, 2)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("If meshProxy is configured then maxNumRetries must be 0");
@@ -85,7 +85,7 @@ public final class ClientConfigurationsTest {
     }
 
     @Test
-    public void meshProxy_exactlyOneUri() throws Exception {
+    public void meshProxy_exactlyOneUri() {
         assertThatThrownBy(() -> ClientConfigurations.of(meshProxyServiceConfig(ImmutableList.of("uri1", "uri2"), 0)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("If meshProxy is configured then uris must contain exactly 1 URI");
@@ -93,7 +93,7 @@ public final class ClientConfigurationsTest {
 
     @Test
     @SuppressWarnings("CheckReturnValue")
-    public void roundRobin_noCooldown() throws Exception {
+    public void roundRobin_noCooldown() {
         ServiceConfiguration serviceConfig = ServiceConfiguration.builder()
                 .uris(uris)
                 .security(SslConfiguration.of(Paths.get("src/test/resources/trustStore.jks")))

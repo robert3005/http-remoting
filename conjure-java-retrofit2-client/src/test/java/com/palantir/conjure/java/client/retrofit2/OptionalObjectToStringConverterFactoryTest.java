@@ -42,7 +42,7 @@ public final class OptionalObjectToStringConverterFactoryTest {
             OptionalObjectToStringConverterFactory.Java8OptionalStringConverter.INSTANCE;
 
     @Test
-    public void testRequiresPathOrQueryAnnotation() throws Exception {
+    public void testRequiresPathOrQueryAnnotation() {
         // Java8
         assertThat(factory.stringConverter(java.util.Optional.class, createAnnotations(Path.class), null)).isNotNull();
         assertThat(factory.stringConverter(java.util.Optional.class, createAnnotations(Query.class), null)).isNotNull();

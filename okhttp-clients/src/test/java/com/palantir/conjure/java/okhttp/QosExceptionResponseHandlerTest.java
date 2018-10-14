@@ -28,7 +28,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public final class QosExceptionResponseHandlerTest extends TestBase {
@@ -38,7 +38,7 @@ public final class QosExceptionResponseHandlerTest extends TestBase {
     private static final URL URL = parseUrl("https://localhost");
 
     @Test
-    public void test308() throws Exception {
+    public void test308() {
         Response response;
 
         // with header
@@ -53,7 +53,7 @@ public final class QosExceptionResponseHandlerTest extends TestBase {
     }
 
     @Test
-    public void test429WithoutRetryAfter() throws Exception {
+    public void test429WithoutRetryAfter() {
         Response response = responseWithCode(REQUEST, 429);
 
         assertThat(handler.handle(response).get())
@@ -62,7 +62,7 @@ public final class QosExceptionResponseHandlerTest extends TestBase {
     }
 
     @Test
-    public void test429WithRetryAfter() throws Exception {
+    public void test429WithRetryAfter() {
         Response response = response(REQUEST, 429).header("Retry-After", "120").build();
 
         assertThat(handler.handle(response).get())
@@ -71,13 +71,13 @@ public final class QosExceptionResponseHandlerTest extends TestBase {
     }
 
     @Test
-    public void test503() throws Exception {
+    public void test503() {
         Response response = responseWithCode(REQUEST, 503);
         assertThat(handler.handle(response).get()).isInstanceOf(QosException.Unavailable.class);
     }
 
     @Test
-    public void doesNotHandleOtherCodes() throws Exception {
+    public void doesNotHandleOtherCodes() {
         Response response = responseWithCode(REQUEST, 500);
         assertThat(handler.handle(response)).isEmpty();
     }

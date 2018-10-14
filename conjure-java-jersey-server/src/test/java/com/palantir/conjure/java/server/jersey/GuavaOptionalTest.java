@@ -59,7 +59,7 @@ public final class GuavaOptionalTest {
     }
 
     @Test
-    public void testOptionalPresent() throws NoSuchMethodException, SecurityException {
+    public void testOptionalPresent() throws SecurityException {
         Response response = target.path("optional").queryParam("value", "val").request().get();
         assertThat(response.getStatus(), is(Status.OK.getStatusCode()));
         assertThat(response.readEntity(String.class), is("valval"));
@@ -73,7 +73,7 @@ public final class GuavaOptionalTest {
 
     public static class OptionalTestServer extends Application<Configuration> {
         @Override
-        public final void run(Configuration config, final Environment env) throws Exception {
+        public final void run(Configuration config, final Environment env) {
             env.jersey().register(ConjureJerseyFeature.INSTANCE);
             env.jersey().register(new OptionalTestResource());
         }

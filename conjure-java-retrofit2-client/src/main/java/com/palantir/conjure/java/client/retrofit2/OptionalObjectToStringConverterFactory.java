@@ -88,7 +88,7 @@ public final class OptionalObjectToStringConverterFactory extends Converter.Fact
         INSTANCE;
 
         @Override
-        public String convert(java.util.Optional<?> value) throws IOException {
+        public String convert(java.util.Optional<?> value) {
             return value.map(Object::toString).orElse(null);
         }
     }
@@ -97,7 +97,7 @@ public final class OptionalObjectToStringConverterFactory extends Converter.Fact
         INSTANCE;
 
         @Override
-        public String convert(java.util.OptionalInt value) throws IOException {
+        public String convert(java.util.OptionalInt value) {
             return value.isPresent() ? Integer.toString(value.getAsInt()) : null;
         }
     }
@@ -106,7 +106,7 @@ public final class OptionalObjectToStringConverterFactory extends Converter.Fact
         INSTANCE;
 
         @Override
-        public String convert(java.util.OptionalDouble value) throws IOException {
+        public String convert(java.util.OptionalDouble value) {
             return value.isPresent() ? Double.toString(value.getAsDouble()) : null;
         }
     }
@@ -115,7 +115,7 @@ public final class OptionalObjectToStringConverterFactory extends Converter.Fact
         INSTANCE;
 
         @Override
-        public String convert(java.util.OptionalLong value) throws IOException {
+        public String convert(java.util.OptionalLong value) {
             return value.isPresent() ? Long.toString(value.getAsLong()) : null;
         }
     }
@@ -124,7 +124,7 @@ public final class OptionalObjectToStringConverterFactory extends Converter.Fact
         INSTANCE;
 
         @Override
-        public String convert(com.google.common.base.Optional<?> value) throws IOException {
+        public String convert(com.google.common.base.Optional<?> value) {
             return value.transform(Object::toString).orNull();
         }
     }

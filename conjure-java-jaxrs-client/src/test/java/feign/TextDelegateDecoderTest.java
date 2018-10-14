@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.any;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
@@ -87,7 +87,7 @@ public final class TextDelegateDecoderTest extends TestBase {
     }
 
     @Test
-    public void testCannotReturnStringWithMediaTypeJson() throws Exception {
+    public void testCannotReturnStringWithMediaTypeJson() {
         assertThatThrownBy(() -> service.getJsonString("foo"))
                 .isInstanceOf(FeignException.class)
                 .hasMessageStartingWith("Unrecognized token 'foo': was expecting 'null', 'true', 'false' or NaN");

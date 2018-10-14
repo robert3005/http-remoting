@@ -64,7 +64,7 @@ public final class TracerTest {
     }
 
     @After
-    public void after() throws Exception {
+    public void after() {
         log.setLevel(previousLoggerLevel);
     }
 
@@ -112,7 +112,7 @@ public final class TracerTest {
 
     public static class TracingTestServer extends Application<Configuration> {
         @Override
-        public final void run(Configuration config, final Environment env) throws Exception {
+        public final void run(Configuration config, final Environment env) {
             env.jersey().register(ConjureJerseyFeature.INSTANCE);
             env.jersey().register(new TracingTestResource());
         }

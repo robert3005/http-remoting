@@ -42,7 +42,7 @@ public final class MeshProxyInterceptorTest {
     private MeshProxyInterceptor interceptor;
 
     @Before
-    public void before() throws Exception {
+    public void before() {
         MockitoAnnotations.initMocks(this);
         interceptor = new MeshProxyInterceptor(HostAndPort.fromString("localhost:456"));
     }

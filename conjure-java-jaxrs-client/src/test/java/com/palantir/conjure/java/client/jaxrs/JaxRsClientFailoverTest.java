@@ -129,7 +129,7 @@ public final class JaxRsClientFailoverTest extends TestBase {
     @Test
     @Theory
     public void testQosError_performsFailover(
-            @FromDataPoints("PinStrategies")  FailoverTestCase failoverTestCase) throws Exception {
+            @FromDataPoints("PinStrategies")  FailoverTestCase failoverTestCase) {
         TestService proxy = failoverTestCase.getProxy();
 
         failoverTestCase.server1.enqueue(new MockResponse().setResponseCode(503));
@@ -142,7 +142,7 @@ public final class JaxRsClientFailoverTest extends TestBase {
     @Test
     @Theory
     public void testConnectionError_performsFailoverOnDnsFailure(
-            @FromDataPoints("AllStrategies") FailoverTestCase failoverTestCase) throws Exception {
+            @FromDataPoints("AllStrategies") FailoverTestCase failoverTestCase) {
         failoverTestCase.server1.enqueue(new MockResponse().setBody("\"foo\""));
 
         TestService bogusHostProxy = JaxRsClient.create(TestService.class,
@@ -155,7 +155,7 @@ public final class JaxRsClientFailoverTest extends TestBase {
     }
 
     @Test
-    public void testQosError_performsRetryWithOneNode() throws Exception {
+    public void testQosError_performsRetryWithOneNode() {
         MockWebServer server1 = new MockWebServer();
         server1.enqueue(new MockResponse().setResponseCode(503));
         server1.enqueue(new MockResponse().setBody("\"foo\""));
@@ -173,7 +173,7 @@ public final class JaxRsClientFailoverTest extends TestBase {
     }
 
     @Test
-    public void testQosError_performsRetryWithOneNodeAndCache() throws Exception {
+    public void testQosError_performsRetryWithOneNodeAndCache() {
         MockWebServer server1 = new MockWebServer();
         server1.enqueue(new MockResponse().setResponseCode(503));
         server1.enqueue(new MockResponse().setBody("\"foo\""));
@@ -223,7 +223,7 @@ public final class JaxRsClientFailoverTest extends TestBase {
     }
 
     @Test
-    public void testPerformsRoundRobin() throws Exception {
+    public void testPerformsRoundRobin() {
         FailoverTestCase failoverTestCase = new FailoverTestCase(new MockWebServer(),
                 new MockWebServer(), CACHE_DURATION, NodeSelectionStrategy.ROUND_ROBIN);
 

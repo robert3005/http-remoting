@@ -40,7 +40,7 @@ public final class JaxRsClientStackTraceTest extends TestBase {
     private TestService proxy;
 
     @Before
-    public void before() throws Exception {
+    public void before() {
         proxy = JaxRsClient.create(TestService.class, AGENT, new HostMetricsRegistry(), ClientConfiguration.builder()
                         .from(createTestConfig("http://localhost:" + server1.getPort()))
                         .maxNumRetries(1)

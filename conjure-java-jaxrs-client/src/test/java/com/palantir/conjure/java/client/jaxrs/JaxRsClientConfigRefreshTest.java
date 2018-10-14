@@ -36,7 +36,7 @@ public final class JaxRsClientConfigRefreshTest extends TestBase {
     public final MockWebServer server2 = new MockWebServer();
 
     @Test
-    public void testConfigRefresh() throws Exception {
+    public void testConfigRefresh() {
 
         ClientConfiguration config1 = createTestConfig("http://localhost:" + server1.getPort());
         ClientConfiguration config2 = createTestConfig("http://localhost:" + server2.getPort());

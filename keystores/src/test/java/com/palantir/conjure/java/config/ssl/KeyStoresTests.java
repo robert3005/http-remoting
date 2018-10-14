@@ -42,7 +42,7 @@ public final class KeyStoresTests {
     public TemporaryFolder tempFolder = new TemporaryFolder();
 
     @Test
-    public void testCreateTrustStoreFromCertificateFile() throws GeneralSecurityException, IOException {
+    public void testCreateTrustStoreFromCertificateFile() throws GeneralSecurityException {
         KeyStore trustStore = KeyStores.createTrustStoreFromCertificates(TestConstants.CA_DER_CERT_PATH);
 
         assertThat(trustStore.size(), is(1));
@@ -82,7 +82,7 @@ public final class KeyStoresTests {
     }
 
     @Test
-    public void testCreateTrustStoreFromDirectoryFailsWithNonCertFiles() throws IOException, GeneralSecurityException {
+    public void testCreateTrustStoreFromDirectoryFailsWithNonCertFiles() throws IOException {
         File certFolder = tempFolder.newFolder();
         File tempCertFile = certFolder.toPath().resolve("crl.pkcs1").toFile();
         Files.copy(TestConstants.COMBINED_CRL_PATH.toFile(), tempCertFile);
@@ -95,7 +95,7 @@ public final class KeyStoresTests {
     }
 
     @Test
-    public void testCreateTrustStoreFromDirectoryFailsWithDirectories() throws IOException, GeneralSecurityException {
+    public void testCreateTrustStoreFromDirectoryFailsWithDirectories() throws IOException {
         File certFolder = tempFolder.newFolder();
         File tempDirFile = certFolder.toPath().resolve("childDir").toFile();
         boolean childDir = tempDirFile.mkdir();
@@ -110,7 +110,7 @@ public final class KeyStoresTests {
 
     @Test
     public void createTrustStoreFromCertificatesFromCertificatesByAlias() throws Exception {
-        String cert = Files.toString(TestConstants.SERVER_CERT_PEM_PATH.toFile(), StandardCharsets.UTF_8);
+        String cert = Files.asCharSource(TestConstants.SERVER_CERT_PEM_PATH.toFile(), StandardCharsets.UTF_8).read();
         KeyStore trustStore = KeyStores.createTrustStoreFromCertificates(
                 ImmutableMap.of("server.crt", PemX509Certificate.of(cert)));
 
@@ -119,7 +119,7 @@ public final class KeyStoresTests {
 
     @Test
     public void createTrustStoreFromCertificatesFromCertificatesByAliasInvalidCert() throws Exception {
-        String cert = Files.toString(TestConstants.COMBINED_CRL_PATH.toFile(), StandardCharsets.UTF_8);
+        String cert = Files.asCharSource(TestConstants.COMBINED_CRL_PATH.toFile(), StandardCharsets.UTF_8).read();
 
         assertThatThrownBy(() -> KeyStores.createTrustStoreFromCertificates(
                 ImmutableMap.of("invalid.crt", PemX509Certificate.of(cert))))
@@ -129,7 +129,7 @@ public final class KeyStoresTests {
     }
 
     @Test
-    public void testCreateKeyStoreFromPemFile() throws GeneralSecurityException, IOException {
+    public void testCreateKeyStoreFromPemFile() throws GeneralSecurityException {
         TestConstants.assumePkcs1ReaderExists();
 
         String password = "changeit";
@@ -174,7 +174,7 @@ public final class KeyStoresTests {
     }
 
     @Test
-    public void testCreateKeyStoreFromDirectoryFailsWithNonKeyFiles() throws IOException, GeneralSecurityException {
+    public void testCreateKeyStoreFromDirectoryFailsWithNonKeyFiles() throws IOException {
         File keyFolder = tempFolder.newFolder();
         File tempCertFile = keyFolder.toPath().resolve("server.cer").toFile();
         Files.copy(TestConstants.SERVER_CERT_PEM_PATH.toFile(), tempCertFile);

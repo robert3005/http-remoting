@@ -20,13 +20,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.palantir.conjure.java.api.config.ssl.SslConfiguration;
 import com.palantir.conjure.java.serialization.ObjectMappers;
+import java.io.IOException;
 import java.nio.file.Paths;
 import org.junit.Test;
 
 public final class SslConfigurationTest {
 
     @Test
-    public void testSerDe() throws Exception {
+    public void testSerDe() throws IOException {
         SslConfiguration serialized = SslConfiguration.builder()
                 .trustStorePath(Paths.get("truststore.jks"))
                 .trustStoreType(SslConfiguration.StoreType.JKS)
@@ -51,7 +52,7 @@ public final class SslConfigurationTest {
     }
 
     @Test
-    public void serDe_optional() throws Exception {
+    public void serDe_optional() throws IOException {
         SslConfiguration serialized = SslConfiguration.of(Paths.get("trustStore.jks"));
         String deserializedCamelCase = "{\"trustStorePath\":\"trustStore.jks\",\"trustStoreType\":\"JKS\","
                 + "\"keyStorePath\":null,\"keyStorePassword\":null,\"keyStoreType\":\"JKS\",\"keyStoreKeyAlias\":null}";

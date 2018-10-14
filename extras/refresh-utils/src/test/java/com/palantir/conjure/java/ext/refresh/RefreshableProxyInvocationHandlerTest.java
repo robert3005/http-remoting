@@ -50,7 +50,7 @@ public final class RefreshableProxyInvocationHandlerTest {
     }
 
     @Test
-    public void testCannotConstructProxyWhenInitialRefreshableIsEmpty() throws Exception {
+    public void testCannotConstructProxyWhenInitialRefreshableIsEmpty() {
         Refreshable<Object> refreshable = Refreshable.empty();
         try {
             RefreshableProxyInvocationHandler.create(refreshable, supplier);
@@ -62,7 +62,7 @@ public final class RefreshableProxyInvocationHandlerTest {
     }
 
     @Test
-    public void testUsesInitialDelegateAndUpdatesDelegatesWhenRefreshableChanges() throws Exception {
+    public void testUsesInitialDelegateAndUpdatesDelegatesWhenRefreshableChanges() {
         Object object1 = new Object();
         Object object2 = new Object();
 

@@ -44,7 +44,7 @@ import okhttp3.Request;
 import okhttp3.ResponseBody;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public final class RemoteExceptionResponseHandlerTest {
@@ -71,7 +71,7 @@ public final class RemoteExceptionResponseHandlerTest {
     private static final RemoteExceptionResponseHandler handler = RemoteExceptionResponseHandler.INSTANCE;
 
     @Test
-    public void doesNotProduceExceptionOn101Or2xx() throws Exception {
+    public void doesNotProduceExceptionOn101Or2xx() {
         assertThat(handler.handle(response(200, MediaType.APPLICATION_JSON, SERIALIZED_EXCEPTION))).isEmpty();
         assertThat(handler.handle(response(101, MediaType.APPLICATION_JSON, SERIALIZED_EXCEPTION))).isEmpty();
     }
@@ -104,7 +104,7 @@ public final class RemoteExceptionResponseHandlerTest {
     }
 
     @Test
-    public void extractsRemoteExceptionForAllErrorCodes() throws Exception {
+    public void extractsRemoteExceptionForAllErrorCodes() {
         for (int code : ImmutableList.of(300, 400, 404, 500)) {
             RemoteException exception = decode(MediaType.APPLICATION_JSON, code, SERIALIZED_EXCEPTION).get();
             assertThat(exception.getCause()).isNull();
@@ -119,7 +119,7 @@ public final class RemoteExceptionResponseHandlerTest {
     }
 
     @Test
-    public void handlesNotAuthorizedException() throws Exception {
+    public void handlesNotAuthorizedException() {
         NotAuthorizedException originalException = new NotAuthorizedException(message,
                 javax.ws.rs.core.Response.Status.UNAUTHORIZED);
 

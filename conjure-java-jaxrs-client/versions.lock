@@ -1,14 +1,14 @@
 {
     "compileClasspath": {
         "com.fasterxml.jackson.core:jackson-annotations": {
-            "locked": "2.9.5",
+            "locked": "2.9.7",
             "transitive": [
                 "com.fasterxml.jackson.core:jackson-databind",
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
             ]
         },
         "com.fasterxml.jackson.core:jackson-core": {
-            "locked": "2.9.5",
+            "locked": "2.9.7",
             "transitive": [
                 "com.fasterxml.jackson.core:jackson-databind",
                 "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor",
@@ -19,7 +19,7 @@
             ]
         },
         "com.fasterxml.jackson.core:jackson-databind": {
-            "locked": "2.9.5",
+            "locked": "2.9.7",
             "transitive": [
                 "com.fasterxml.jackson.datatype:jackson-datatype-guava",
                 "com.fasterxml.jackson.datatype:jackson-datatype-jdk8",
@@ -36,20 +36,20 @@
             ]
         },
         "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor": {
-            "locked": "2.9.5",
+            "locked": "2.9.7",
             "transitive": [
                 "com.palantir.conjure.java.runtime:conjure-java-jackson-serialization"
             ]
         },
         "com.fasterxml.jackson.datatype:jackson-datatype-guava": {
-            "locked": "2.9.5",
+            "locked": "2.9.7",
             "transitive": [
                 "com.palantir.conjure.java.runtime:conjure-java-jackson-serialization",
                 "com.palantir.tracing:tracing"
             ]
         },
         "com.fasterxml.jackson.datatype:jackson-datatype-jdk8": {
-            "locked": "2.9.5",
+            "locked": "2.9.7",
             "transitive": [
                 "com.palantir.conjure.java.runtime:conjure-java-jackson-serialization",
                 "com.palantir.tokens:auth-tokens",
@@ -57,20 +57,20 @@
             ]
         },
         "com.fasterxml.jackson.datatype:jackson-datatype-jsr310": {
-            "locked": "2.9.5",
+            "locked": "2.9.7",
             "transitive": [
                 "com.palantir.conjure.java.runtime:conjure-java-jackson-serialization"
             ]
         },
         "com.fasterxml.jackson.module:jackson-module-afterburner": {
-            "locked": "2.9.5",
+            "locked": "2.9.7",
             "transitive": [
                 "com.palantir.conjure.java.runtime:conjure-java-jackson-serialization",
                 "com.palantir.tracing:tracing"
             ]
         },
         "com.google.code.findbugs:jsr305": {
-            "locked": "3.0.0",
+            "locked": "3.0.2",
             "transitive": [
                 "com.google.guava:guava",
                 "com.palantir.conjure.java.api:errors",
@@ -107,7 +107,7 @@
             ]
         },
         "com.netflix.feign:feign-core": {
-            "locked": "8.17.0",
+            "locked": "8.18.0",
             "transitive": [
                 "com.netflix.feign:feign-jackson",
                 "com.netflix.feign:feign-jaxrs",
@@ -116,16 +116,16 @@
             ]
         },
         "com.netflix.feign:feign-jackson": {
-            "locked": "8.17.0"
+            "locked": "8.18.0"
         },
         "com.netflix.feign:feign-jaxrs": {
-            "locked": "8.17.0"
+            "locked": "8.18.0"
         },
         "com.netflix.feign:feign-okhttp": {
-            "locked": "8.17.0"
+            "locked": "8.18.0"
         },
         "com.netflix.feign:feign-slf4j": {
-            "locked": "8.17.0"
+            "locked": "8.18.0"
         },
         "com.palantir.conjure.java.api:errors": {
             "locked": "2.0.0",
@@ -171,7 +171,7 @@
             "project": true
         },
         "com.palantir.safe-logging:preconditions": {
-            "locked": "1.3.0",
+            "locked": "1.5.1",
             "transitive": [
                 "com.palantir.conjure.java.api:errors",
                 "com.palantir.conjure.java.api:service-config",
@@ -179,7 +179,7 @@
             ]
         },
         "com.palantir.safe-logging:safe-logging": {
-            "locked": "1.3.0",
+            "locked": "1.5.1",
             "transitive": [
                 "com.palantir.conjure.java.api:errors",
                 "com.palantir.conjure.java.api:service-config",
@@ -285,14 +285,14 @@
     },
     "runtime": {
         "com.fasterxml.jackson.core:jackson-annotations": {
-            "locked": "2.9.5",
+            "locked": "2.9.7",
             "transitive": [
                 "com.fasterxml.jackson.core:jackson-databind",
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
             ]
         },
         "com.fasterxml.jackson.core:jackson-core": {
-            "locked": "2.9.5",
+            "locked": "2.9.7",
             "transitive": [
                 "com.fasterxml.jackson.core:jackson-databind",
                 "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor",
@@ -303,7 +303,7 @@
             ]
         },
         "com.fasterxml.jackson.core:jackson-databind": {
-            "locked": "2.9.5",
+            "locked": "2.9.7",
             "transitive": [
                 "com.fasterxml.jackson.datatype:jackson-datatype-guava",
                 "com.fasterxml.jackson.datatype:jackson-datatype-jdk8",
@@ -320,20 +320,20 @@
             ]
         },
         "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor": {
-            "locked": "2.9.5",
+            "locked": "2.9.7",
             "transitive": [
                 "com.palantir.conjure.java.runtime:conjure-java-jackson-serialization"
             ]
         },
         "com.fasterxml.jackson.datatype:jackson-datatype-guava": {
-            "locked": "2.9.5",
+            "locked": "2.9.7",
             "transitive": [
                 "com.palantir.conjure.java.runtime:conjure-java-jackson-serialization",
                 "com.palantir.tracing:tracing"
             ]
         },
         "com.fasterxml.jackson.datatype:jackson-datatype-jdk8": {
-            "locked": "2.9.5",
+            "locked": "2.9.7",
             "transitive": [
                 "com.palantir.conjure.java.runtime:conjure-java-jackson-serialization",
                 "com.palantir.tokens:auth-tokens",
@@ -341,20 +341,20 @@
             ]
         },
         "com.fasterxml.jackson.datatype:jackson-datatype-jsr310": {
-            "locked": "2.9.5",
+            "locked": "2.9.7",
             "transitive": [
                 "com.palantir.conjure.java.runtime:conjure-java-jackson-serialization"
             ]
         },
         "com.fasterxml.jackson.module:jackson-module-afterburner": {
-            "locked": "2.9.5",
+            "locked": "2.9.7",
             "transitive": [
                 "com.palantir.conjure.java.runtime:conjure-java-jackson-serialization",
                 "com.palantir.tracing:tracing"
             ]
         },
         "com.google.code.findbugs:jsr305": {
-            "locked": "3.0.0",
+            "locked": "3.0.2",
             "transitive": [
                 "com.google.guava:guava",
                 "com.palantir.conjure.java.api:errors",
@@ -391,7 +391,7 @@
             ]
         },
         "com.netflix.feign:feign-core": {
-            "locked": "8.17.0",
+            "locked": "8.18.0",
             "transitive": [
                 "com.netflix.feign:feign-jackson",
                 "com.netflix.feign:feign-jaxrs",
@@ -400,16 +400,16 @@
             ]
         },
         "com.netflix.feign:feign-jackson": {
-            "locked": "8.17.0"
+            "locked": "8.18.0"
         },
         "com.netflix.feign:feign-jaxrs": {
-            "locked": "8.17.0"
+            "locked": "8.18.0"
         },
         "com.netflix.feign:feign-okhttp": {
-            "locked": "8.17.0"
+            "locked": "8.18.0"
         },
         "com.netflix.feign:feign-slf4j": {
-            "locked": "8.17.0"
+            "locked": "8.18.0"
         },
         "com.palantir.conjure.java.api:errors": {
             "locked": "2.0.0",
@@ -455,7 +455,7 @@
             "project": true
         },
         "com.palantir.safe-logging:preconditions": {
-            "locked": "1.3.0",
+            "locked": "1.5.1",
             "transitive": [
                 "com.palantir.conjure.java.api:errors",
                 "com.palantir.conjure.java.api:service-config",
@@ -463,7 +463,7 @@
             ]
         },
         "com.palantir.safe-logging:safe-logging": {
-            "locked": "1.3.0",
+            "locked": "1.5.1",
             "transitive": [
                 "com.palantir.conjure.java.api:errors",
                 "com.palantir.conjure.java.api:service-config",

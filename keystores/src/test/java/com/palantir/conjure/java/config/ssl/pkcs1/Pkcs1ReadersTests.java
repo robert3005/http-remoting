@@ -30,7 +30,7 @@ import org.junit.Test;
 public final class Pkcs1ReadersTests {
 
     @Test
-    public void testReadPrivateKeyFailsIfNoProvidersPresent() throws IOException {
+    public void testReadPrivateKeyFailsIfNoProvidersPresent() {
         Assume.assumeFalse(ServiceLoader.load(Pkcs1Reader.class).iterator().hasNext());
 
         try {

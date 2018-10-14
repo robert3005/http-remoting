@@ -48,7 +48,7 @@ public final class TracerTest extends TestBase {
     }
 
     @Test
-    public void testClientIsInstrumentedWithTracer() throws InterruptedException, IOException {
+    public void testClientIsInstrumentedWithTracer() throws InterruptedException {
         OpenSpan parentTrace = Tracer.startSpan("");
 
         Tracer.subscribe(TracerTest.class.getName(), span -> {

@@ -46,7 +46,7 @@ public final class DropwizardConfigTests {
     public static final class DropwizardConfigTestsServer extends Application<DropwizardConfigTestsConfiguration> {
 
         @Override
-        public void run(DropwizardConfigTestsConfiguration cfg, final Environment env) throws Exception {}
+        public void run(DropwizardConfigTestsConfiguration cfg, final Environment env) {}
     }
 
     public static final class DropwizardConfigTestsConfiguration extends Configuration {

@@ -121,7 +121,7 @@ public final class OkHttpClientsTest extends TestBase {
                 public void onFailure(Call call, IOException exception) {}
 
                 @Override
-                public void onResponse(Call call, Response response) throws IOException {
+                public void onResponse(Call call, Response response) {
                     if (response.code() == code) {
                         wasSuccessful.countDown();
                     }
@@ -145,7 +145,7 @@ public final class OkHttpClientsTest extends TestBase {
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(Call call, Response response) {
                 successHandlerExecuted.release();
             }
         });
@@ -168,7 +168,7 @@ public final class OkHttpClientsTest extends TestBase {
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(Call call, Response response) {
                 successHandlerExecuted.release();  // should never happen
             }
         });
@@ -178,7 +178,7 @@ public final class OkHttpClientsTest extends TestBase {
     }
 
     @Test
-    public void doesNotHangIfManyCallsResultInExceptions() throws Exception {
+    public void doesNotHangIfManyCallsResultInExceptions() {
         int maxRetries = OkHttpClients.NUM_SCHEDULING_THREADS * 2;
 
         for (int i = 0; i <= maxRetries; i++) {
@@ -208,7 +208,7 @@ public final class OkHttpClientsTest extends TestBase {
     }
 
     @Test
-    public void throwsIoExceptionWithCorrectBodyAfterFailingToDeserializeSerializableError() throws Exception {
+    public void throwsIoExceptionWithCorrectBodyAfterFailingToDeserializeSerializableError() {
         String responseJson = "{\"attribute\": \"foo\"}";
         MockResponse mockResponse = new MockResponse()
                 .setBody(responseJson)
@@ -223,7 +223,7 @@ public final class OkHttpClientsTest extends TestBase {
     }
 
     @Test
-    public void handlesUnavailable_obeysMaxNumRetriesAndEventuallyPropagatesQosException() throws Exception {
+    public void handlesUnavailable_obeysMaxNumRetriesAndEventuallyPropagatesQosException() {
         Call call;
 
         server.enqueue(new MockResponse().setResponseCode(503));
@@ -255,7 +255,7 @@ public final class OkHttpClientsTest extends TestBase {
     }
 
     @Test
-    public void handlesThrottle_obeysMaxNumRetriesAndEventuallyPropagatesQosException() throws Exception {
+    public void handlesThrottle_obeysMaxNumRetriesAndEventuallyPropagatesQosException() {
         Call call;
 
         server.enqueue(new MockResponse().setResponseCode(429));
@@ -276,7 +276,7 @@ public final class OkHttpClientsTest extends TestBase {
     }
 
     @Test
-    public void handlesThrottle_obeysMaxNumRetriesEvenWhenRetryAfterHeaderIsGiven() throws Exception {
+    public void handlesThrottle_obeysMaxNumRetriesEvenWhenRetryAfterHeaderIsGiven() {
         server.enqueue(new MockResponse().setResponseCode(429).addHeader(HttpHeaders.RETRY_AFTER, "0"));
         server.enqueue(new MockResponse().setResponseCode(429).addHeader(HttpHeaders.RETRY_AFTER, "0"));
         server.enqueue(new MockResponse().setResponseCode(429).addHeader(HttpHeaders.RETRY_AFTER, "0"));
@@ -365,7 +365,7 @@ public final class OkHttpClientsTest extends TestBase {
     }
 
     @Test
-    public void handlesRetryOther_doesNotRedirectInfinitelyOften() throws Exception {
+    public void handlesRetryOther_doesNotRedirectInfinitelyOften() {
         // Note that RemotingOkHttpClient.MAX_NUM_RELOCATIONS = 20
         for (int i = 0; i < 21; ++i) {
             server.enqueue(new MockResponse().setResponseCode(308).addHeader(HttpHeaders.LOCATION, url));

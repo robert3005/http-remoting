@@ -26,20 +26,20 @@ import okhttp3.HttpUrl;
 import okhttp3.Request;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public final class UrlSelectorTest extends TestBase {
 
     @Test
-    public void mustSpecifyAtLeastOneUrl() throws Exception {
+    public void mustSpecifyAtLeastOneUrl() {
         assertThatThrownBy(() -> UrlSelectorImpl.create(set(), false))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Must specify at least one URL");
     }
 
     @Test
-    public void baseUrlsMustBeCanonical() throws Exception {
+    public void baseUrlsMustBeCanonical() {
         for (String url : new String[] {
                 "user:pass@foo.com/path",
                 ""
@@ -69,7 +69,7 @@ public final class UrlSelectorTest extends TestBase {
     }
 
     @Test
-    public void testRedirectTo_succeedsWhenRequestedBaseUrlPathIsPrefixOfCurrentPath() throws Exception {
+    public void testRedirectTo_succeedsWhenRequestedBaseUrlPathIsPrefixOfCurrentPath() {
         String url1 = "http://foo/a";
         String url2 = "https://bar:8080/a/b/c";
         List<String> baseUrls = list(url1, url2);
@@ -86,7 +86,7 @@ public final class UrlSelectorTest extends TestBase {
     }
 
     @Test
-    public void testRedirectTo_updatesCurrentPointer() throws Exception {
+    public void testRedirectTo_updatesCurrentPointer() {
         UrlSelectorImpl selector = UrlSelectorImpl.create(list("http://foo/a", "http://bar/a"), false);
         HttpUrl current = HttpUrl.parse("http://baz/a/b/path");
         String redirectTo = "http://bar/a";
@@ -96,7 +96,7 @@ public final class UrlSelectorTest extends TestBase {
     }
 
     @Test
-    public void testRedirectTo_findsMatchesWithCaseInsensitiveHostNames() throws Exception {
+    public void testRedirectTo_findsMatchesWithCaseInsensitiveHostNames() {
         String baseUrl = "http://foo/a";
         UrlSelectorImpl selector = UrlSelectorImpl.create(list(baseUrl), false);
 
@@ -104,7 +104,7 @@ public final class UrlSelectorTest extends TestBase {
     }
 
     @Test
-    public void testRedirectTo_doesNotFindMatchesForCaseSentitivePaths() throws Exception {
+    public void testRedirectTo_doesNotFindMatchesForCaseSentitivePaths() {
         String baseUrl = "http://foo/a";
         UrlSelectorImpl selector = UrlSelectorImpl.create(list(baseUrl), false);
 
@@ -112,7 +112,7 @@ public final class UrlSelectorTest extends TestBase {
     }
 
     @Test
-    public void testRedirectTo_failsWhenRequestedBaseUrlPathIsNotPrefixOfCurrentPath() throws Exception {
+    public void testRedirectTo_failsWhenRequestedBaseUrlPathIsNotPrefixOfCurrentPath() {
         String url1 = "http://foo/a";
         String url2 = "https://bar:8080/a/b/c";
         UrlSelectorImpl selector = UrlSelectorImpl.create(list(url1, url2), false);
@@ -121,7 +121,7 @@ public final class UrlSelectorTest extends TestBase {
     }
 
     @Test
-    public void testIsBaseUrlFor() throws Exception {
+    public void testIsBaseUrlFor() {
         // Negative cases
         assertThat(UrlSelectorImpl.isBaseUrlFor(parse("http://foo/a"), parse("https://foo/a"))).isFalse();
         assertThat(UrlSelectorImpl.isBaseUrlFor(parse("http://foo/a"), parse("http://bar/a"))).isFalse();
@@ -136,7 +136,7 @@ public final class UrlSelectorTest extends TestBase {
     }
 
     @Test
-    public void testRedirectToNext_updatesCurrentPointer() throws Exception {
+    public void testRedirectToNext_updatesCurrentPointer() {
         UrlSelectorImpl selector = UrlSelectorImpl.create(list("http://foo/a", "http://bar/a"), false);
         HttpUrl current = HttpUrl.parse("http://baz/a/b/path");
 
@@ -183,7 +183,7 @@ public final class UrlSelectorTest extends TestBase {
     }
 
     @Test
-    public void testWorksWithWebSockets() throws Exception {
+    public void testWorksWithWebSockets() {
         Request wsRequest = new Request.Builder()
                 .url("wss://foo/a")
                 .build();

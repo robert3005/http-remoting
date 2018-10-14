@@ -35,7 +35,7 @@ import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public final class InputStreamDelegateEncoderTest extends TestBase {
@@ -65,7 +65,7 @@ public final class InputStreamDelegateEncoderTest extends TestBase {
     }
 
     @Test
-    public void testEncodesAsInputStream() throws Exception {
+    public void testEncodesAsInputStream() {
         byte[] object = bytes("data");
 
         inputStreamDelegateEncoder.encode(new ByteArrayInputStream(object), InputStream.class, requestTemplate);
@@ -73,7 +73,7 @@ public final class InputStreamDelegateEncoderTest extends TestBase {
     }
 
     @Test
-    public void testUsesDelegateWithNonInputStreamBodyType() throws Exception {
+    public void testUsesDelegateWithNonInputStreamBodyType() {
         String data = "data";
 
         inputStreamDelegateEncoder.encode(data, String.class, requestTemplate);
